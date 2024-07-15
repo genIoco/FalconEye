@@ -58,6 +58,7 @@ extern "C" NTSTATUS DriverEntry(
 	_In_ PDRIVER_OBJECT DriverObject, 
 	_In_ PUNICODE_STRING RegistryPath)
 {
+	// 告诉编译器RegistryPath变量已使用，取消警告
 	UNREFERENCED_PARAMETER(RegistryPath);
 
 	NTSTATUS status;
@@ -91,6 +92,7 @@ extern "C" NTSTATUS DriverEntry(
 	//
 	DriverObject->DriverUnload = DriverUnload;
 
+	// 寻找系统导出函数NtCreateFile的导出地址
 	OriginalNtCreateFile = (NtCreateFile_t)MmGetSystemRoutineAddress(&StringNtCreateFile);
 	if (!OriginalNtCreateFile)
 	{
@@ -98,6 +100,7 @@ extern "C" NTSTATUS DriverEntry(
 		return STATUS_ENTRYPOINT_NOT_FOUND;
 	}
 
+	// 通过NtCreateFile地址找到Ntdll内存镜像起始地址
 	FindNtBase(OriginalNtCreateFile);
 	InitActionHistory();
 	GetVolumeList();

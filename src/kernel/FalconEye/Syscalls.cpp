@@ -74,6 +74,7 @@ DEF_ORIG_SYSCALL_PTR(NtUserMessageCall);
 DEF_ORIG_SYSCALL_PTR(NtUserPostThreadMessage);
 DEF_ORIG_SYSCALL_PTR(NtUserSendInput);
 
+// FindNtBase能够根据start传入的导出函数地址，定位dll模块镜像加载起始地址，基本原理就是从start地址开始，前向变量直到找到符合DOS文件头的地址即为起始地址，简单粗暴
 PVOID64 FindNtBase(PVOID64 start)
 {
     UCHAR* It = (UCHAR*)start;

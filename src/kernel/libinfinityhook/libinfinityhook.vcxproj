@@ -148,6 +148,7 @@
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <EnablePREfast>false</EnablePREfast>
       <DisableSpecificWarnings>4996;4711;5045;28751;4748;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,6 +157,7 @@
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <EnablePREfast>false</EnablePREfast>
       <DisableSpecificWarnings>4711;5045;28751;4603;4627;4986;4987;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
